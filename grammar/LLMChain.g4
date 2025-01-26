@@ -2,7 +2,9 @@ grammar LLMChain;
 
 // PARSER RULES
 
-start: statement+ EOF;
+start: program EOF;
+
+program: statement+;
 
 statement: defineStatement | loadStatement | actionStatement | outputStatement;
 
