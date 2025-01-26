@@ -1,4 +1,5 @@
 from gen.LLMChainVisitor import LLMChainVisitor
+from .actions import checkAnalyzeOrSummarize, checkExpandOrRefine
 
 class SemanticAnalyzer(LLMChainVisitor):
     def __init__(self):
@@ -19,28 +20,15 @@ class SemanticAnalyzer(LLMChainVisitor):
         self.symbol_table[input_name] = {"type": input_type}
     
     def visitActionStatement(self, ctx):
-        action = ctx.getChild(0).getText()  
-        input_name = ctx.ID(0).getText()  
-        model_name = ctx.ID(1).getText()
-        output_name = ctx.ID(2).getText()  
-        
-        # Validate input
-        if input_name not in self.symbol_table:
-            raise Exception(f"Input '{input_name}' is not defined.")
-        
-        # Validate model
-        if model_name not in self.symbol_table or self.symbol_table[model_name]["type"] != "MODEL":
-            raise Exception(f"Model '{model_name}' is not defined.")
-        
-        # Type compatibility check
-        input_type = self.symbol_table[input_name]["type"]
-        if action == "ANALYZE" and input_type != "IMAGE":
-            raise Exception(f"ANALYZE requires an IMAGE, but got {input_type}.")
-        if action in ["EXPAND", "REFINE"] and input_type not in ["TEXT", "PDF"]:
-            raise Exception(f"{action} requires TEXT or PDF, but got {input_type}.")
-        
-        # Store output in symbol table
-        self.symbol_table[output_name] = {"type": "TEXT"}  # Assume output is always TEXT for simplicity
+        action = ctx.getChild(0).getText()  # Get the action type (ANALYZE, EXPAND, etc.)
+
+        if action in ["ANALYZE", "SUMMARIZE"]:
+            checkAnalyzeOrSummarize(ctx, action, self.symbol_table)
+        elif action in ["EXPAND", "REFINE"]:
+            checkExpandOrRefine(ctx, action, self.symbol_table)
+        else:
+            raise Exception(f"Unsupported action '{action}'.")
+
     
     def visitOutputStatement(self, ctx):
         output_name = ctx.ID().getText()
