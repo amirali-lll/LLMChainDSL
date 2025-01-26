@@ -44,5 +44,20 @@ class LLMChainVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by LLMChainParser#type.
+    def visitType(self, ctx:LLMChainParser.TypeContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by LLMChainParser#name.
+    def visitName(self, ctx:LLMChainParser.NameContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by LLMChainParser#string.
+    def visitString(self, ctx:LLMChainParser.StringContext):
+        return self.visitChildren(ctx)
+
+
 
 del LLMChainParser

@@ -10,18 +10,22 @@ statement: defineStatement | loadStatement | actionStatement | outputStatement;
 
 // STATEMENTS
 
-defineStatement: 'DEFINE' ID 'AS' STRING ';';
+defineStatement: 'DEFINE' name 'AS' string ';';
 
-loadStatement: 'LOAD' ( 'IMAGE' | 'PDF' | 'TEXT') STRING 'INTO' ID ';';
+loadStatement: 'LOAD' type string 'INTO' name ';';
 
-outputStatement: 'OUTPUT' ID 'TO' STRING ';';
+outputStatement: 'OUTPUT' name 'TO' string ';';
 
 actionStatement:
-	'ANALYZE' ID 'USING' ID 'INTO' ID ';' |
-	'EXPAND' ID 'WITH' ID 'USING' ID 'INTO' ID ';' |
-	'REFINE' ID 'WITH' ID 'USING' ID 'INTO' ID ';' |
-	'SUMMARIZE' ID 'WITH' ID 'INTO' ID ';';
+	'ANALYZE' name 'USING' name 'INTO' name ';' |
+	'EXPAND' name 'WITH' name 'USING' name 'INTO' name ';' |
+	'REFINE' name 'WITH' name 'USING' name 'INTO' name ';' |
+	'SUMMARIZE' name 'WITH' name 'INTO' name ';';
 
+
+type: 'IMAGE' | 'PDF' | 'TEXT';
+name: ID;
+string: STRING;
 
 // LEXER RULES
 

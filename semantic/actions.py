@@ -1,7 +1,7 @@
 def checkAnalyzeOrSummarize(ctx, action, symbol_table):
-    input_data = ctx.ID(0).getText() 
-    model = ctx.ID(1).getText()
-    output_data = ctx.ID(2).getText()
+    input_data = ctx.name(0).getText() 
+    model = ctx.name(1).getText()
+    output_data = ctx.name(2).getText()
 
     # Check input_data validity
     if input_data not in symbol_table:
@@ -20,10 +20,10 @@ def checkAnalyzeOrSummarize(ctx, action, symbol_table):
 
 
 def checkExpandOrRefine(ctx, action, symbol_table):
-    input_data = ctx.ID(0).getText()  
-    context_data = ctx.ID(1).getText() 
-    model = ctx.ID(2).getText()       
-    output_data = ctx.ID(3).getText() 
+    input_data = ctx.name(0).getText()  
+    context_data = ctx.name(1).getText() 
+    model = ctx.name(2).getText()       
+    output_data = ctx.name(3).getText() 
 
     # Check input_data validity
     if input_data not in symbol_table:
@@ -45,4 +45,3 @@ def checkExpandOrRefine(ctx, action, symbol_table):
     if output_data in symbol_table:
         raise Exception(f"Output variable '{output_data}' is already defined.")
     symbol_table[output_data] = { "type": "TEXT" }
-    

@@ -71,5 +71,32 @@ class LLMChainListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by LLMChainParser#type.
+    def enterType(self, ctx:LLMChainParser.TypeContext):
+        pass
+
+    # Exit a parse tree produced by LLMChainParser#type.
+    def exitType(self, ctx:LLMChainParser.TypeContext):
+        pass
+
+
+    # Enter a parse tree produced by LLMChainParser#name.
+    def enterName(self, ctx:LLMChainParser.NameContext):
+        pass
+
+    # Exit a parse tree produced by LLMChainParser#name.
+    def exitName(self, ctx:LLMChainParser.NameContext):
+        pass
+
+
+    # Enter a parse tree produced by LLMChainParser#string.
+    def enterString(self, ctx:LLMChainParser.StringContext):
+        pass
+
+    # Exit a parse tree produced by LLMChainParser#string.
+    def exitString(self, ctx:LLMChainParser.StringContext):
+        pass
+
+
 
 del LLMChainParser
