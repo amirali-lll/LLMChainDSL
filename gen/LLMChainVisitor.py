@@ -14,6 +14,11 @@ class LLMChainVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by LLMChainParser#program.
+    def visitProgram(self, ctx:LLMChainParser.ProgramContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by LLMChainParser#statement.
     def visitStatement(self, ctx:LLMChainParser.StatementContext):
         return self.visitChildren(ctx)

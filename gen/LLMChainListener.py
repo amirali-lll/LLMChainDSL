@@ -17,6 +17,15 @@ class LLMChainListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by LLMChainParser#program.
+    def enterProgram(self, ctx:LLMChainParser.ProgramContext):
+        pass
+
+    # Exit a parse tree produced by LLMChainParser#program.
+    def exitProgram(self, ctx:LLMChainParser.ProgramContext):
+        pass
+
+
     # Enter a parse tree produced by LLMChainParser#statement.
     def enterStatement(self, ctx:LLMChainParser.StatementContext):
         pass
