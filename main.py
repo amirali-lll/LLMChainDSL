@@ -32,11 +32,25 @@ def main(arguments):
     walker = ParseTreeWalker()
     walker.walk(t=parse_tree, listener=ast_builder_listener)
     ast = ast_builder_listener.ast
-    show_ast(ast.root)
+    # show_ast(ast.root)
     
+    # Post Order AST Traversal
+    post_order_ast_traverser = PostOrderASTTraverser()
+    post_order_ast_traverser.node_attributes = ['label','text','number']
+    traversal = post_order_ast_traverser.traverse_ast(ast.root)
+    traversal_labels = [item['label'] for item in traversal]
+    print(traversal_labels)
+    print(traversal[0])
+    print(type(traversal_labels[0]))
     
     # Code Generation
-    print("Code generation would start here.")
+    code_generator = LLMChainCodeGenerator()
+    generated_code = code_generator.generate_code(traversal)
+    
+    with open(arguments.output, 'w') as f:
+        f.write(generated_code)
+    
+    print(f"Code generation completed successfully! Output written to {arguments.output}")
 
 if __name__ == '__main__':
 	argparser = argparse.ArgumentParser()
