@@ -1,7 +1,9 @@
 from antlr4 import *
 import argparse
+from repository.post_order_ast_traverser import PostOrderASTTraverser
 from gen.LLMChainLexer import LLMChainLexer
 from gen.LLMChainParser import LLMChainParser
+from gen.LLMChainCodeGenerator import LLMChainCodeGenerator
 from semantic.semantic_analyzer import SemanticAnalyzer
 
 
@@ -12,7 +14,7 @@ def main(arguments):
     token_stream = CommonTokenStream(lexer)
     
     parser = LLMChainParser(token_stream)
-    tree = parser.start() 
+    tree = parser.program() 
 
     # Semantic Analysis
     analyzer = SemanticAnalyzer()
@@ -24,6 +26,7 @@ def main(arguments):
         return
 
     # AST Generation
+    
     
     # Code Generation
     print("Code generation would start here.")
