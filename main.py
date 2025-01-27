@@ -4,8 +4,8 @@ from repository.post_order_ast_traverser import PostOrderASTTraverser
 from repository.ast_to_networkx_graph import show_ast
 from gen.LLMChainLexer import LLMChainLexer
 from gen.LLMChainParser import LLMChainParser
-from gen.LLMChainCodeGenerator import LLMChainCodeGenerator
-from gen.LLMChainCustomListener import LLMChainCustomListener
+from Code.LLMChainCodeGenerator import LLMChainCodeGenerator
+from Code.LLMChainCustomListener import LLMChainCustomListener
 from semantic.semantic_analyzer import SemanticAnalyzer
 
 

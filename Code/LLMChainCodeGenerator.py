@@ -1,4 +1,4 @@
-from gen.FunctionsBody import functions
+from Code.FunctionsBody import functions
 
 
 class LLMChainCodeGenerator:
