@@ -19,14 +19,13 @@ def main(arguments):
     parse_tree = parser.program() 
 
     # Semantic Analysis
-    # TODO: Implement Semantic Analysis for 4 types of actions and uncomment the following code
-    # analyzer = SemanticAnalyzer()
-    # try:
-    #     analyzer.visit(parse_tree)
-    #     print("Semantic analysis completed successfully!")
-    # except Exception as e:
-    #     print(f"Semantic analysis failed: {e}")
-    #     return
+    analyzer = SemanticAnalyzer()
+    analyzer.visit(parse_tree)
+    try:
+        print("Semantic analysis completed successfully!")
+    except Exception as e:
+        print(f"Semantic analysis failed: {e}")
+        return
 
     # AST Generation
     ast_builder_listener = LLMChainCustomListener(parser.ruleNames)
@@ -37,12 +36,10 @@ def main(arguments):
     
     # Post Order AST Traversal
     post_order_ast_traverser = PostOrderASTTraverser()
-    post_order_ast_traverser.node_attributes = ['label','text','number']
+    post_order_ast_traverser.node_attributes = ['label']
     traversal = post_order_ast_traverser.traverse_ast(ast.root)
     traversal_labels = [item['label'] for item in traversal]
-    print(traversal_labels)
-    print(traversal[0])
-    print(type(traversal_labels[0]))
+    # print(traversal_labels)
     
     # Code Generation
     code_generator = LLMChainCodeGenerator()
