@@ -17,10 +17,15 @@ loadStatement: 'LOAD' type string 'INTO' name ';';
 outputStatement: 'OUTPUT' name 'TO' string ';';
 
 actionStatement:
-	'ANALYZE' name 'USING' name 'INTO' name ';' |
-	'EXPAND' name 'WITH' name 'USING' name 'INTO' name ';' |
-	'REFINE' name 'WITH' name 'USING' name 'INTO' name ';' |
-	'SUMMARIZE' name 'WITH' name 'INTO' name ';';
+	analyzeStatement |
+	expandStatement |
+	summarizeStatement |
+	refineStatement;
+
+analyzeStatement: 'ANALYZE' name 'USING' name 'INTO' name ';';
+summarizeStatement: 'SUMMARIZE' name 'WITH' name 'INTO' name ';';
+expandStatement: 'EXPAND' name 'WITH' name 'USING' name 'INTO' name ';';
+refineStatement: 'REFINE' name 'WITH' name 'USING' name 'INTO' name ';';
 
 
 type: 'IMAGE' | 'PDF' | 'TEXT';

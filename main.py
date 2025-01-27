@@ -19,13 +19,14 @@ def main(arguments):
     parse_tree = parser.program() 
 
     # Semantic Analysis
-    analyzer = SemanticAnalyzer()
-    try:
-        analyzer.visit(parse_tree)
-        print("Semantic analysis completed successfully!")
-    except Exception as e:
-        print(f"Semantic analysis failed: {e}")
-        return
+    # TODO: Implement Semantic Analysis for 4 types of actions and uncomment the following code
+    # analyzer = SemanticAnalyzer()
+    # try:
+    #     analyzer.visit(parse_tree)
+    #     print("Semantic analysis completed successfully!")
+    # except Exception as e:
+    #     print(f"Semantic analysis failed: {e}")
+    #     return
 
     # AST Generation
     ast_builder_listener = LLMChainCustomListener(parser.ruleNames)

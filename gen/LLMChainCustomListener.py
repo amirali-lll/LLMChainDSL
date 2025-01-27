@@ -9,7 +9,10 @@ class LLMChainCustomListener(LLMChainListener):
         self.overridden_rules = [ 
             'defineStatement' ,
             'loadStatement',
-            'actionStatement',
+            'analyzeStatement',
+            'expandStatement',
+            'summarizeStatement',
+            'refineStatement',
             'outputStatement' ]
         self.rule_names = rule_names
         self.ast = AST()
@@ -26,9 +29,19 @@ class LLMChainCustomListener(LLMChainListener):
     def exitLoadStatement(self, ctx):
         make_ast_subtree(self.ast, ctx, "load", keep_node=True)
         
-    def exitActionStatement(self, ctx):
-        make_ast_subtree(self.ast, ctx, "action", keep_node=True)
-        
     def exitOutputStatement(self, ctx):
         make_ast_subtree(self.ast, ctx, "output", keep_node=True)
         
+    def exitAnalyzeStatement(self, ctx):
+        make_ast_subtree(self.ast, ctx, "analyze", keep_node=True)
+    
+    def exitExpandStatement(self, ctx):
+        make_ast_subtree(self.ast, ctx, "expand", keep_node=True)
+    
+    def exitSummarizeStatement(self, ctx):
+        make_ast_subtree(self.ast, ctx, "summarize", keep_node=True)
+    
+    def exitRefineStatement(self, ctx):
+        make_ast_subtree(self.ast, ctx, "refine", keep_node=True)
+    
+    
