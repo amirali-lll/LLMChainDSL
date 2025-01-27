@@ -60,7 +60,7 @@ class LLMChainCodeGenerator:
         path = self.operand_stack.pop()
         variable = self.operand_stack.pop()
         
-        return f"with open('{path}', 'w') as f:\n\tf.write({variable})"
+        return f"with open({path}, 'w') as f:\n\tf.write({variable})"
     
     def generate_code_for_load(self):
         variable = self.operand_stack.pop()
