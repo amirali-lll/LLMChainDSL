@@ -19,15 +19,7 @@ class SemanticAnalyzer(LLMChainVisitor):
             raise Exception(f"Input '{input_name}' is already loaded.")
         self.symbol_table[input_name] = {"type": input_type}
     
-    def visitActionStatement(self, ctx):
-        action = ctx.getChild(0).getText()  # Get the action type (ANALYZE, EXPAND, etc.)
-
-        if action in ["ANALYZE", "SUMMARIZE"]:
-            checkAnalyzeOrSummarize(ctx, action, self.symbol_table)
-        elif action in ["EXPAND", "REFINE"]:
-            checkExpandOrRefine(ctx, action, self.symbol_table)
-        else:
-            raise Exception(f"Unsupported action '{action}'.")
+# TODO: implement SemanticAnalyzer for 4 types of actions
 
     
     def visitOutputStatement(self, ctx):
