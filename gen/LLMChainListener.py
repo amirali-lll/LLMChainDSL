@@ -71,6 +71,42 @@ class LLMChainListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by LLMChainParser#analyzeStatement.
+    def enterAnalyzeStatement(self, ctx:LLMChainParser.AnalyzeStatementContext):
+        pass
+
+    # Exit a parse tree produced by LLMChainParser#analyzeStatement.
+    def exitAnalyzeStatement(self, ctx:LLMChainParser.AnalyzeStatementContext):
+        pass
+
+
+    # Enter a parse tree produced by LLMChainParser#summarizeStatement.
+    def enterSummarizeStatement(self, ctx:LLMChainParser.SummarizeStatementContext):
+        pass
+
+    # Exit a parse tree produced by LLMChainParser#summarizeStatement.
+    def exitSummarizeStatement(self, ctx:LLMChainParser.SummarizeStatementContext):
+        pass
+
+
+    # Enter a parse tree produced by LLMChainParser#expandStatement.
+    def enterExpandStatement(self, ctx:LLMChainParser.ExpandStatementContext):
+        pass
+
+    # Exit a parse tree produced by LLMChainParser#expandStatement.
+    def exitExpandStatement(self, ctx:LLMChainParser.ExpandStatementContext):
+        pass
+
+
+    # Enter a parse tree produced by LLMChainParser#refineStatement.
+    def enterRefineStatement(self, ctx:LLMChainParser.RefineStatementContext):
+        pass
+
+    # Exit a parse tree produced by LLMChainParser#refineStatement.
+    def exitRefineStatement(self, ctx:LLMChainParser.RefineStatementContext):
+        pass
+
+
     # Enter a parse tree produced by LLMChainParser#type.
     def enterType(self, ctx:LLMChainParser.TypeContext):
         pass
